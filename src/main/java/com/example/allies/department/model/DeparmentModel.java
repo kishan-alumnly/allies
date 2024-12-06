@@ -1,16 +1,16 @@
-package com.example.allies.department.view;
+package com.example.allies.department.model;
 
-import com.example.allies.employee.view.EmployeeView;
+import com.example.allies.employee.model.EmployeeModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DeparmentView {
+public class DeparmentModel {
     private String id;
     private String name;
     private String location;
 
-    List<EmployeeView> employees = new ArrayList<>();
+    List<EmployeeModel> employeeModels = new ArrayList<>();
 
     public String getId() {
         return id;
@@ -36,11 +36,11 @@ public class DeparmentView {
         this.location = location;
     }
 
-    public List<EmployeeView> getEmployees() {
-        return employees;
+    public List<EmployeeModel> getEmployeeModels() {
+        return employeeModels;
     }
 
-    public void setEmployees(List<EmployeeView> employees) {
-        this.employees = employees;
+    public void setEmployeeModels(List<EmployeeModel> employeeModels) {
+        this.employeeModels = employeeModels;
     }
 }

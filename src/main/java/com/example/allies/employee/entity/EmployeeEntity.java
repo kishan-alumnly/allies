@@ -1,15 +1,23 @@
-package com.example.allies.employee.view;
+package com.example.allies.employee.entity;
 
+import com.example.allies.department.entity.DepartmentEntity;
 
-import com.example.allies.department.view.DeparmentView;
+import javax.persistence.*;
 
-public class EmployeeView {
+@Entity
+@Table(name = "employee")
+public class EmployeeEntity {
+    @Id
     private String id;
     private String name;
     private String email;
     private String position;
     private Integer salary;
-    private DeparmentView deparmentView;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "department_id")
+    private DepartmentEntity departmentEntity;
+
 
     public String getId() {
         return id;
@@ -51,11 +59,12 @@ public class EmployeeView {
         this.salary = salary;
     }
 
-    public DeparmentView getDeparmentView() {
-        return deparmentView;
+    public DepartmentEntity getDepartmentEntity() {
+        return departmentEntity;
     }
 
-    public void setDeparmentView(DeparmentView deparmentView) {
-        this.deparmentView = deparmentView;
+    public void setDepartmentEntity(DepartmentEntity departmentEntity) {
+        this.departmentEntity = departmentEntity;
     }
 }
+

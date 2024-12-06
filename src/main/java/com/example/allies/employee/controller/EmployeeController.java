@@ -1,8 +1,8 @@
 package com.example.allies.employee.controller;
 
+import com.example.allies.employee.entity.EmployeeEntity;
+import com.example.allies.employee.service.EmployeeServiceImpl;
 import com.example.allies.employee.model.EmployeeModel;
-import com.example.allies.employee.service.EmployeeService;
-import com.example.allies.employee.view.EmployeeView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,25 +13,25 @@ import java.util.List;
 public class EmployeeController {
 
     @Autowired
-    private EmployeeService employeeService;
+    private EmployeeServiceImpl employeeService;
 
     @GetMapping("{employeeId}")
-    public EmployeeView getEmployee(@PathVariable String employeeId) {
+    public EmployeeModel getEmployee(@PathVariable String employeeId) {
         return employeeService.getEmployee(employeeId);
     }
 
     @GetMapping
-    public List<EmployeeView> getEmployees() {
+    public List<EmployeeModel> getEmployees() {
         return employeeService.getAllEmployees();
     }
 
     @GetMapping("/department/{departmentId}")
-    public List<EmployeeView> getEmployeesByDepartment(@PathVariable String departmentId) {
+    public List<EmployeeModel> getEmployeesByDepartment(@PathVariable String departmentId) {
         return employeeService.getEmployeesByDepartment(departmentId);
     }
 
     @PostMapping("/department/{departmentId}")
-    public EmployeeView addEmployee(@PathVariable String departmentId, @RequestBody EmployeeModel employee) {
+    public EmployeeModel addEmployee(@PathVariable String departmentId, @RequestBody EmployeeEntity employee) {
         return employeeService.addEmployee(departmentId, employee);
     }
 

@@ -1,23 +1,18 @@
 package com.example.allies.employee.model;
 
-import com.example.allies.department.model.DepartmentModel;
 
-import javax.persistence.*;
+import com.example.allies.department.model.DeparmentModel;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-@Entity
-@Table(name = "employee")
 public class EmployeeModel {
-    @Id
     private String id;
     private String name;
     private String email;
     private String position;
     private Integer salary;
 
-    @ManyToOne
-    @JoinColumn(name = "department_id")
-    private DepartmentModel department;
-
+    @JsonIgnore
+    private DeparmentModel deparmentModel;
 
     public String getId() {
         return id;
@@ -59,12 +54,11 @@ public class EmployeeModel {
         this.salary = salary;
     }
 
-    public DepartmentModel getDepartment() {
-        return department;
+    public DeparmentModel getDeparmentModel() {
+        return deparmentModel;
     }
 
-    public void setDepartment(DepartmentModel department) {
-        this.department = department;
+    public void setDeparmentModel(DeparmentModel deparmentModel) {
+        this.deparmentModel = deparmentModel;
     }
 }
-

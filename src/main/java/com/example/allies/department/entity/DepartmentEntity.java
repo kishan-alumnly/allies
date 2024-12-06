@@ -1,24 +1,22 @@
-package com.example.allies.department.model;
+package com.example.allies.department.entity;
 
-import com.example.allies.employee.model.EmployeeModel;
+import com.example.allies.employee.entity.EmployeeEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "department")
-public class DepartmentModel {
+public class DepartmentEntity {
     @Id
     private String id;
     private String name;
     private String location;
 
-    @OneToMany(mappedBy = "department")
-    List<EmployeeModel> employees = new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "department_id")  // Foreign key column
+    List<EmployeeEntity> employeeEntities = new ArrayList<>();
 
     public String getId() {
         return id;
@@ -44,12 +42,11 @@ public class DepartmentModel {
         this.location = location;
     }
 
-    public List<EmployeeModel> getEmployees() {
-        return employees;
+    public List<EmployeeEntity> getEmployeeEntities() {
+        return employeeEntities;
     }
 
-    public void setEmployees(List<EmployeeModel> employees) {
-        this.employees = employees;
+    public void setEmployeeEntities(List<EmployeeEntity> employeeEntities) {
+        this.employeeEntities = employeeEntities;
     }
-
 }

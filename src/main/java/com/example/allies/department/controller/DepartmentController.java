@@ -1,7 +1,7 @@
 package com.example.allies.department.controller;
 
 import com.example.allies.department.service.DepartmentService;
-import com.example.allies.department.view.DeparmentView;
+import com.example.allies.department.model.DeparmentModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +17,7 @@ public class DepartmentController {
     private DepartmentService departmentService;
 
     @GetMapping
-    public List<DeparmentView> getAllDepartments() {
+    public List<DeparmentModel> getAllDepartments() {
         return departmentService.getAllDepartments();
     }
 
